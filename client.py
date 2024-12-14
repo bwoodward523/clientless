@@ -33,13 +33,14 @@ class Client:
 	def __init__(self, names: dict):
 
 		# static stuff
-		self.publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(b"-----BEGIN PUBLIC KEY-----\nMFswDQYJKoZIhvcNAQEBBQADSgAwRwJAeyjMOLhcK4o2AnFRhn8vPteUy5Fux/cXN/J+wT/zYIEUINo02frn+Kyxx0RIXJ3CvaHkwmueVL8ytfqo8Ol/OwIDAQAB\n-----END PUBLIC KEY-----")
-		self.remoteHostAddr = "51.222.11.213"
+
+		self.publicKey = rsa.PublicKey.load_pkcs1_openssl_pem(b"-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTa2VXtjKzQ8HO2hCRuXZPhezl0HcWdO0QxUhz1b+N5xJIXjvPGYpawLnJHgVgjcTI4dqDW9sthI3hEActKdKV6Zm/dpPMuCvgEXq1ajOcr8WEX+pDji5kr9ELH0iZjjlvgfzUiOBI6q4ba3SRYiAJFgOoe1TCC1sDk+rDZEPcMwIDAQAB\n-----END PUBLIC KEY-----")
+		self.remoteHostAddr = "127.0.0.1"
 		self.remoteHostPort = 2050
 		# use this key to decrypt packets from the server
-		self.clientReceiveKey = RC4(bytearray.fromhex("612a806cac78114ba5013cb531"))
+		self.clientReceiveKey = RC4(bytearray.fromhex("c91d9eec420160730d825604e0"))
 		# use this key to send packets to the server
-		self.serverRecieveKey = RC4(bytearray.fromhex("BA15DE"))
+		self.serverRecieveKey = RC4(bytearray.fromhex("5a4d2016bc16dc64883194ffd9"))
 		self.headers = {
 			'User-Agent': "Mozilla/5.0 (Windows; U; en-US) AppleWebKit/533.19.4 (KHTML, like Gecko) AdobeAIR/32.0",
 			'Referer' : 'app:/Valor.swf',
@@ -47,7 +48,7 @@ class Client:
 		}
 		self.email = None
 		self.password = None
-		self.buildVersion = "3.8.0"
+		self.buildVersion = "3.0.0"
 		self.loginToken = b""
 		self.serverSocket = None
 		self.lastPacketTime = time.time()
@@ -65,7 +66,7 @@ class Client:
 		# state consistency
 		self.gameIDs = {
 			1 : "Realm",
-			-1 : "Nexus",
+			-2 : "Nexus",
 			-2 : "Nexus",
 			-5 : "Vault",
 			-15 : "Marketplace",
@@ -104,11 +105,12 @@ class Client:
 		self.serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 		self.serverSocket.connect((self.remoteHostAddr, self.remoteHostPort))
 		self.connected = True
+
 		
 	# send hello packet
 	def fireHelloPacket(self, useReconnect):
 		p = Hello()
-
+		print("helloooo")
 		if not useReconnect:
 			p.buildVersion = self.buildVersion
 			p.gameID = -1
@@ -403,13 +405,14 @@ class Client:
 	def SendPacketToServer(self, packet):
 		self.serverRecieveKey.encrypt(packet.data)
 		self.serverSocket.sendall(packet.format())
+		print(self.serverSocket)
 
 	# get loginToken
 	def accountVerify(self):
 
 		x = requests.post(
-			"https://valor-prod.realmdex.com/account/verify?g={}".format(self.email),
-			headers = self.headers,
+			"http://127.0.0.1:8080/account/verify?g={}".format(self.email),
+			#headers = self.headers,
 			data = {
 				"guid" : self.email,
 				"password" : self.password,
@@ -418,25 +421,27 @@ class Client:
 				"gameClientVersion" : self.buildVersion
 			}
 		).content.decode("utf-8")
-		self.loginToken = bytes(re.findall("<LoginToken>(.+?)</LoginToken>", x, flags = re.I)[0], 'utf-8')
+		#print(x)
+		#self.loginToken = bytes(re.findall("<LoginToken>(.+?)</LoginToken>", x, flags = re.I)[0], 'utf-8')
 		print(self.loginToken)
 
 	def getRandomCharID(self):
 		print("getting random char ID")
 		x = requests.post(
-			"https://valor-prod.realmdex.com/char/list?g={}".format(self.email),
+			"http://127.0.0.1:8080//char/list?g={}".format(self.email),
 			headers = self.headers,
-			data = {
-				"guid" : self.email,
-				"loginToken" : self.loginToken,
-				"do_login" : "true",
-				"ignore" : 0,
-				"gameClientVersion" : self.buildVersion
-			}
+			 data = {
+			 	"guid" : self.email,
+			 	"password" : self.password}
+			# 	"do_login" : "true",
+			# 	"ignore" : 0,
+			# 	"gameClientVersion" : self.buildVersion
+			# }
 		).content.decode("utf-8")
-
+		#print(x)
 		try:
 			charID = int(re.findall("<char id=\"([0-9]+)\">", x, flags = re.I)[0])
+			print(charID)
 			return charID
 		except IndexError:
 			return -1
@@ -473,10 +478,11 @@ class Client:
 	def loadModules(self):
 		if self.moduleName == "notifier":
 			self.module = Notifier()
-		elif self.moduleName == "none":
+		elif self.moduleName == "afk":
 			self.module = AFK()
-		elif self.moduleName == "WZYBFIPQLMOH":
-			self.module = WZYBFIPQLMOH()
+		print(self.moduleName)
+		#elif self.moduleName == "WZYBFIPQLMOH":
+		#	self.module = WZYBFIPQLMOH()
 
 		if self.module == None:
 			return False
