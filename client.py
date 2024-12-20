@@ -10,6 +10,7 @@ import json
 import pickle
 import traceback
 import threading
+import numpy as np
 
 from valorlib.Packets.Packet import *	
 from valorlib.Packets.DataStructures import *	
@@ -22,7 +23,15 @@ class ObjectInfo:
 
 	def __init__(self):
 		self.pos = WorldPosData()
+		self.pos.x = 100.0 + random.randint(-10, 10)
+		self.pos.y = 133.0 + random.randint(-10, 10)
 		self.objectType = 0
+		self.moveRecords = MoveRecords()
+		self.tickId = 0
+		self.lastTickId = -1
+
+	def clearMoveRecord(self):
+		self.moveRecord = []
 
 	def PrintString(self):
 		self.pos.PrintString()
@@ -93,6 +102,18 @@ class Client:
 			PacketTypes.Update, PacketTypes.NewTick, PacketTypes.EnemyShoot
 			]
 		"""
+		self.objInfo = ObjectInfo()
+
+		#Client Stats
+		self.minSpeed = 0.004
+		self.maxSpeed = 0.0096
+		self.speed = 1
+		self.speedMult = 1.0
+		self.velocity = Vector2(1, 0)
+		self.funnyAngle = 0.0  + random.randint(0, 360)
+
+		#Player
+		self.player = Player()
 
 	# returns how long the client has been active
 	def time(self):
@@ -106,31 +127,71 @@ class Client:
 		self.serverSocket.connect((self.remoteHostAddr, self.remoteHostPort))
 		self.connected = True
 
-		
+	def fireMovePacket(self, tickId, vel):
+		#update the player's position by the velocity
+		self.calcualteVelocity()
+
+		self.objInfo.pos.x += vel.x
+		self.objInfo.pos.y += vel.y
+
+		#Build the move packet
+		move = Move()
+		move.tickID = tickId
+		move.time = self.time()
+		move.newPosition.x = self.objInfo.pos.x
+		move.newPosition.y = self.objInfo.pos.y
+
+		last_move = self.objInfo.moveRecords.last_clear_time
+		move.records = []
+		if last_move >= 0 and move.time - last_move > 125:
+			len_records = min(10, len(self.objInfo.moveRecords.records))
+			for i in range(len_records):
+				if self.objInfo.moveRecords.records[i].time >= move.time - 25:
+					break
+				move.records.append(self.objInfo.moveRecords.records[i])
+
+		self.objInfo.moveRecords.clear(move.time)
+		#move.PrintString()
+
+		#TEMPORARY PACKET SPAM FIX
+		#if random.randint(0, 100) < 10:
+		self.SendPacketToServer(CreatePacket(move))
+
+	#Calculate the velocity of the player the way the flash Client does
+	def calcualteVelocity(self):
+
+		self.velocity = Vector2.rotate(Vector2(1,0),self.funnyAngle) * self.getMoveSpeed()
+		self.funnyAngle += 1
+		if self.funnyAngle >= 360:
+			self.funnyAngle = 0
+		print(self.speed)
+
+	#Calculate the speed of the player the way the flash Client does
+	def getMoveSpeed(self):
+		moveSpeed = self.minSpeed + (self.speed / 75 * (self.maxSpeed - self.minSpeed))
+		moveSpeed = self.speed * self.speedMult
+		return moveSpeed
 	# send hello packet
 	def fireHelloPacket(self, useReconnect):
 		p = Hello()
-		print("helloooo")
 		if not useReconnect:
 			p.buildVersion = self.buildVersion
-			p.gameID = -1
+			p.gameID = -2
 			p.guid = self.encryptString(self.email)
-			p.loginToken = self.encryptString(self.loginToken)
+			p.password = self.encryptString(self.password)
 			p.keyTime = -1
 			p.key = []
 			p.mapJSON = ""
-			p.cliBytes = 0
 			self.currentMap = 'Nexus'
 		else:
 			p.buildVersion = self.buildVersion
 			p.gameID = self.nextGameID
 			self.currentMap = self.gameIDs[p.gameID]
 			p.guid = self.encryptString(self.email)
-			p.loginToken = self.encryptString(self.loginToken)
+			p.password = self.encryptString(self.password)
 			p.keyTime = self.nextKeyTime
 			p.key = self.nextKey
 			p.mapJSON = ""
-			p.cliBytes = 0
 
 		p.PrintString()
 
@@ -140,7 +201,8 @@ class Client:
 		self.nextKey = []
 
 		self.helloTime = time.time()
-		
+
+
 		self.SendPacketToServer(CreatePacket(p))
 
 	def fireLoadPacket(self):
@@ -150,6 +212,10 @@ class Client:
 			self.charID = self.getRandomCharID()
 		p.charID = self.charID
 		p.isFromArena = False
+		self.SendPacketToServer(CreatePacket(p))
+	def firePlayerTextPacket(self):
+		p = PlayerText()
+		p.text = "Hello World" + str(random.randint(0, 1000))
 		self.SendPacketToServer(CreatePacket(p))
 
 	# listen for incoming packets and deal with them
@@ -176,20 +242,17 @@ class Client:
 			data += buf
 			leftToRead -= len(buf)
 
-		# decipher it to update our internal state
-		self.clientReceiveKey.decrypt(data)
 		packet = Packet(header, data, packetID)
 		send = True
 
-		"""	
-		# for debugging
+
+		# # for debugging
 		try:
 			if packet.ID not in self.ignoreIn:
 				print("Server sent:", PacketTypes.reverseDict[packet.ID])
 		except:
 			print("Got unknown packet from server, id", packet.ID)
-		"""
-		
+
 		if packet.ID == PacketTypes.CreateSuccess:
 			# capture our object ID, necessary to send many types of packets like invswap or buy
 			self.onCreateSuccess(packet)
@@ -221,16 +284,35 @@ class Client:
 				obj.objectType = i.objectType
 				self.newObjects.update({i.objectStatusData.objectID : obj})
 
-		elif packet.ID == PacketTypes.Text:
-			p = Text()
-			p.read(packet.data)
-			if p.name == '#Sidon the Dark Elder' and 'CLOSED THIS' in p.text:
-				self.oryx = True
+		# elif packet.ID == PacketTypes.Text:
+		# 	p = Text()
+		# 	p.read(packet.data)
+		# 	if p.name == '#Sidon the Dark Elder' and 'CLOSED THIS' in p.text:
+		# 		self.oryx = True
 
 		elif packet.ID == PacketTypes.NewTick:
 			p = NewTick()
 			p.read(packet.data)
 			#p.PrintString()
+
+			#Handle the incoming object status data
+			for i in p.statuses:
+				#if isinstance(i, ObjectStatusData):
+				#print("helloObj: id == ", i.objectID, i.PrintString())
+				#print(i.PrintString())
+				if i.objectID == self.objectID:
+					print("Player's stats")
+					#Now we process the player's stats
+					self.objInfo.pos = i.pos
+					#i.PrintString()
+			self.objInfo.tickId += 1
+
+			self.fireMovePacket(self.objInfo.tickId, self.velocity)
+			self.objInfo.lastTickId = self.objInfo.tickId
+
+			#print(self.objInfo.lastTickId, "<- tickID")
+
+		#p.PrintString()
 
 		elif packet.ID == PacketTypes.QueuePing:
 			p = QueuePing()
@@ -272,6 +354,7 @@ class Client:
 			p.read(packet.data)
 			p.PrintString()
 			raise Exception("Got failure from server. Aborting")
+
 
 	# create a wizzy
 	def Create(self):
@@ -351,10 +434,13 @@ class Client:
 			self.Create()
 
 		print("Connected to server!")
-
+		helloworldt = 0
 		# listen to packets
 		while True:
-
+			helloworldt += random.randint(0, 1000)
+			if helloworldt % 1000 == 0:
+				#print("????")
+				self.firePlayerTextPacket()
 			try:
 				if time.time() - self.lastPacketTime > 30:
 					print("Connection was hanging")
@@ -391,7 +477,7 @@ class Client:
 
 			except Exception as e:
 				print("Ran into exception:", e)
-				self.reset()
+#				self.reset()
 
 			except KeyboardInterrupt:
 				print("Quitting.")
@@ -403,10 +489,11 @@ class Client:
 
 	# send a packet to the server
 	def SendPacketToServer(self, packet):
-		self.serverRecieveKey.encrypt(packet.data)
 		self.serverSocket.sendall(packet.format())
-		print(self.serverSocket)
+		#print(f"Packet sent to server: {self.serverSocket}")
 
+	def moveRight(self, worldPos):
+		pass
 	# get loginToken
 	def accountVerify(self):
 
@@ -423,7 +510,6 @@ class Client:
 		).content.decode("utf-8")
 		#print(x)
 		#self.loginToken = bytes(re.findall("<LoginToken>(.+?)</LoginToken>", x, flags = re.I)[0], 'utf-8')
-		print(self.loginToken)
 
 	def getRandomCharID(self):
 		print("getting random char ID")
@@ -438,10 +524,14 @@ class Client:
 			# 	"gameClientVersion" : self.buildVersion
 			# }
 		).content.decode("utf-8")
-		#print(x)
+		print(x)
 		try:
 			charID = int(re.findall("<char id=\"([0-9]+)\">", x, flags = re.I)[0])
 			print(charID)
+
+			#Now lets parse the stat data and information from our player into the client from this XML
+
+
 			return charID
 		except IndexError:
 			return -1
@@ -452,18 +542,17 @@ class Client:
 		self.connected = True
 		self.objectID = p.objectID
 		self.charID = p.charID
-		print("Connected to {}!".format(self.currentMap))
+		print("Connected to {}!".format(self.currentMap))#, "objectID:", self.objectID, "charID:", self.charID)
 
 	#########
 	# hooks #
 	#########
 
-	def initializeAccountDetails(self):
+	def initializeAccountDetails(self, email, password, moduleName):
 		try:
-			x = json.load(open("account.json", "r"))
-			self.email = x['email'].encode("utf-8")
-			self.password = x['password'].encode("utf-8")
-			self.moduleName = x['module']
+			self.email = email.encode("utf-8")
+			self.password = password.encode("utf-8")
+			self.moduleName = moduleName
 
 			if self.email == b"" or self.password == b"":
 				raise Exception("You left your credentials blank!")
@@ -493,7 +582,6 @@ if __name__ == "__main__":
 
 	with open("NameDictionary.pkl", "rb") as f:
 		nameDictionary = pickle.load(f)
-
 
 	c = Client(nameDictionary)
 	if not c.initializeAccountDetails():

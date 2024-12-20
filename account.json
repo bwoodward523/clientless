@@ -1,5 +1,1064 @@
 {
-    "email" : "bota@gmail.com",
-    "password" : "bota123",
-    "module": "afk"
+    "accounts": [
+        {
+            "email": "bota@gmail.com",
+            "password": "bota123",
+            "module": "afk"
+        },
+        {
+            "email": "botb@gmail.com",
+            "password": "botb123",
+            "module": "afk"
+        },
+        {
+            "email": "testa@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "testb@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "testc@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "testd@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "teste@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "testf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "testg@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "testh@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "testi@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "testj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumba@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbb@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbc@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbd@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbe@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbg@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbh@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbi@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbk@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbl@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbm@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbn@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbo@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbp@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbq@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbr@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbs@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbt@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbu@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbv@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbw@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbx@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumby@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbz@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbaa@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbab@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbac@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbad@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbae@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbaf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbag@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbah@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbai@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbaj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbak@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbal@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbam@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumban@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbao@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbap@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbaq@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbar@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbas@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbat@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbau@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbav@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbaw@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbax@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbay@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbaz@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbba@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbb@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbc@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbd@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbe@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbg@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbh@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbi@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbk@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbl@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbm@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbn@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbo@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbp@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbq@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbr@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbs@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbt@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbu@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbv@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbw@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbx@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbby@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbbz@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbca@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcb@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcc@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcd@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbce@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcg@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbch@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbci@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbck@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcl@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcm@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcn@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbco@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcp@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcq@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcr@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcs@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbct@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcu@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "dumbcv@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playera@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerb@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerc@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerd@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playere@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerg@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerh@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeri@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerk@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerl@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerm@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playern@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playero@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerp@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerq@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerr@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "players@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playert@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeru@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerv@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerw@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerx@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playery@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerz@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeraa@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerab@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerac@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerad@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerae@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeraf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerag@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerah@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerai@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeraj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerak@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeral@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeram@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeran@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerao@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerap@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeraq@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerar@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeras@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerat@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerau@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerav@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeraw@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerax@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeray@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playeraz@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerba@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbb@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbc@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbd@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbe@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbg@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbh@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbi@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbk@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbl@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbm@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbn@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbo@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbp@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbq@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbr@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbs@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbt@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbu@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbv@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbw@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbx@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerby@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerbz@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerca@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercb@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercc@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercd@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerce@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercf@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercg@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerch@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerci@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercj@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerck@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercl@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercm@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercn@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerco@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercp@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercq@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercr@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercs@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playerct@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercu@gmail.com",
+            "password": "password",
+            "module": "afk"
+        },
+        {
+            "email": "playercv@gmail.com",
+            "password": "password",
+            "module": "afk"
+        }
+    ]
 }
