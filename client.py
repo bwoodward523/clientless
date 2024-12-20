@@ -113,7 +113,7 @@ class Client:
 		self.funnyAngle = 0.0  + random.randint(0, 360)
 
 		#Player
-		self.player = Player()
+		self.player = None
 
 	# returns how long the client has been active
 	def time(self):
@@ -164,12 +164,13 @@ class Client:
 		self.funnyAngle += 1
 		if self.funnyAngle >= 360:
 			self.funnyAngle = 0
-		print(self.speed)
+		#print(self.speed)
 
 	#Calculate the speed of the player the way the flash Client does
 	def getMoveSpeed(self):
 		moveSpeed = self.minSpeed + (self.speed / 75 * (self.maxSpeed - self.minSpeed))
 		moveSpeed = self.speed * self.speedMult
+		print("speed stat is ", self.player.speed)
 		return moveSpeed
 	# send hello packet
 	def fireHelloPacket(self, useReconnect):
@@ -247,11 +248,11 @@ class Client:
 
 
 		# # for debugging
-		try:
-			if packet.ID not in self.ignoreIn:
-				print("Server sent:", PacketTypes.reverseDict[packet.ID])
-		except:
-			print("Got unknown packet from server, id", packet.ID)
+		# try:
+		# 	if packet.ID not in self.ignoreIn:
+		# 		print("Server sent:", PacketTypes.reverseDict[packet.ID])
+		# except:
+		# 	print("Got unknown packet from server, id", packet.ID)
 
 		if packet.ID == PacketTypes.CreateSuccess:
 			# capture our object ID, necessary to send many types of packets like invswap or buy
@@ -427,7 +428,7 @@ class Client:
 		# load or create:
 		if self.charID is None:
 			self.charID = self.getRandomCharID()
-
+			print("Better now!")
 		# if no character exists
 		if self.charID == -1:
 			self.blockLoad = True
@@ -527,10 +528,11 @@ class Client:
 		print(x)
 		try:
 			charID = int(re.findall("<char id=\"([0-9]+)\">", x, flags = re.I)[0])
-			print(charID)
+			#print(charID)
 
 			#Now lets parse the stat data and information from our player into the client from this XML
-
+			self.player = Player.fromPlayerXML("bot", x)
+			print(self.player.HPMax)
 
 			return charID
 		except IndexError:
